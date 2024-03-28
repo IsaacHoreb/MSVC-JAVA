@@ -20,7 +20,13 @@
     <packaging>pom</packaging> <!--4. Agregado como proyecto padre-->
 
     <!--Agregado para funcionar(los hijos)-->
-    
+    <modules>
+        <module>microservices-cliente</module>
+        <module>microservices-config</module>
+        <module>microservices-eureka</module>
+        <module>microservices-gateway</module>
+        <module>microservices-product</module>
+    </modules>
 
     <!--3.-Modificamos la version java-->
     <properties>
