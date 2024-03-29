@@ -8,7 +8,7 @@ spring:
     name: msvc-client
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/client
+    url: jdbc:mysql://localhost:3306/springproyect
     username: root
     password: Dragon1234
   jpa:

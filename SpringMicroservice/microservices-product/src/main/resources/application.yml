@@ -1,1 +1,26 @@
-spring.application.name=microservices-product
+server:
+  port: 9091
+
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888 #Agregado, ya que el msvc-config no esta configurado
+  application:
+    name: msvc-product
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springproyect
+    username: root
+    password: Dragon1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+#Para que se registre en Eureka
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
