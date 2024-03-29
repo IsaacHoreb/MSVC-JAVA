@@ -14,7 +14,7 @@ public class productControllers {
     @Autowired
     private IProductServices productServices;
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public ResponseEntity<productEntity> saveProduc(@RequestBody @Validated productEntity product) {
         return ResponseEntity.ok(productServices.guardarProductos(product));
     }
@@ -24,7 +24,7 @@ public class productControllers {
         return ResponseEntity.ok(productServices.obtenerProductoPorId(idProduct));
     }
 
-    @GetMapping("/findAll")
+    @GetMapping("/listAll")
     public ResponseEntity<?> listAllProduct() {
         return ResponseEntity.ok(productServices.listarTodosProductos());
     }
@@ -37,6 +37,7 @@ public class productControllers {
 
     @DeleteMapping("/delete/search/{idProduct}")
     public ResponseEntity<?> deleteProductId(@PathVariable("idProduct") Long idProduct) {
+        productServices.eliminarProductoPorId(idProduct);
         return ResponseEntity.ok("Producto eliminado con éxito.");
     }
 
