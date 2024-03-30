@@ -16,4 +16,7 @@ public interface IClientServices {
 
     List<clientEntity> listarTodoClientes();
 
+    //Servicio para comunicar con el otro msvc
+    List<clientEntity> findByIdProduct(Long idProduct);
+
 }

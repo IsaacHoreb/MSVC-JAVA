@@ -14,13 +14,17 @@ public class clientEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_client")
+    private Long idClient;
     private String name;
 
     @Column(name = "last_name")
     private String lastName;
-    private int age;
+    private Long age;
     private String email;
     private String address;
+
+    @Column(name = "product_id")
+    private Long productId;
 
 }

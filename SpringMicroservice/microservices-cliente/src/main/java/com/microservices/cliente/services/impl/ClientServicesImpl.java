@@ -66,4 +66,11 @@ public class ClientServicesImpl implements IClientServices {
     public List<clientEntity> listarTodoClientes() {
         return clienteRepository.findAll();
     }
+
+    //Para comunicar
+    @Override
+    public List<clientEntity> findByIdProduct(Long idProduct) {
+        return clienteRepository.findAllClient(idProduct);
+    }
+    
 }

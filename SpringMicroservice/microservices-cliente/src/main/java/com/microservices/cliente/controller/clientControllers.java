@@ -42,4 +42,11 @@ public class clientControllers {
         return ResponseEntity.ok("Cliente eliminado con éxito");
     }
 
+    //endPoint para comunicarse
+    @GetMapping("/search-by-product/{idProduct}")
+    public ResponseEntity<?> findByIdProduct(@PathVariable("idProduct") Long idProduct) {
+        return ResponseEntity.ok(clientServices.findByIdProduct(idProduct));
+    }
+
+
 }
