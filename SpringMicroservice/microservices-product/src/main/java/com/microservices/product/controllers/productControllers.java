@@ -2,6 +2,7 @@ package com.microservices.product.controllers;
 
 import com.microservices.product.entity.productEntity;
 import com.microservices.product.services.IProductServices;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +16,7 @@ public class productControllers {
     private IProductServices productServices;
 
     @PostMapping("/create")
-    public ResponseEntity<productEntity> saveProduc(@RequestBody @Validated productEntity product) {
+    public ResponseEntity<productEntity> saveProduc(@RequestBody @Valid productEntity product) {
         return ResponseEntity.ok(productServices.guardarProductos(product));
     }
 
@@ -30,7 +31,7 @@ public class productControllers {
     }
 
     @PutMapping("/update/search/{idProduct}")
-    public ResponseEntity<productEntity> updateProductId(@PathVariable("idProduct") Long idProduct, @RequestBody @Validated productEntity detalles) {
+    public ResponseEntity<productEntity> updateProductId(@PathVariable("idProduct") Long idProduct, @RequestBody @Valid productEntity detalles) {
         return ResponseEntity.ok(productServices.actualizarProductoPorId(idProduct, detalles));
     }
 
