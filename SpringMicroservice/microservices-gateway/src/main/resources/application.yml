@@ -1,1 +1,27 @@
-spring.application.name=microservices-gateway
+server:
+  port: 8080
+
+eureka:
+  client:
+    register-with-eureka: false
+
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888 #Agregado, ya que el msvc-config no esta configurado
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      mvc:
+        discovery:
+          locator:
+            enabled: true
+        routes:
+          - id: game
+            uri: http://localhost:9092
+            predicates:
+              - Path=/api/game/**
+          - id: jugadores
+            uri: http://localhost:9093
+            predicates:
+              - Path=/api/jugadores/**
