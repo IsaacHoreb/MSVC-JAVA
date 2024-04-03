@@ -11,7 +11,7 @@ import java.util.List;
 public interface clienteRepository extends JpaRepository<clientEntity, Long> {
 
     //Para traer datos
-    @Query("SELECT c FROM clientEntity WHERE c.productId = :idProduct")
+    @Query("SELECT c FROM clientEntity c WHERE c.productId = :idProduct")
     List<clientEntity> findAllClient(Long idProduct);
 
 }

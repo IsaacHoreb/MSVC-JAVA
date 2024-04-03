@@ -26,6 +26,8 @@
         <module>microservices-eureka</module>
         <module>microservices-gateway</module>
         <module>microservices-product</module>
+        <module>microservice-jugadores</module>
+        <module>microservice-game</module>
     </modules>
 
     <!--3.-Modificamos la version java-->

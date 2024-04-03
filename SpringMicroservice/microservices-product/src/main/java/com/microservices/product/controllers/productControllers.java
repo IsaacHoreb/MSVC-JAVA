@@ -35,11 +35,16 @@ public class productControllers {
         return ResponseEntity.ok(productServices.actualizarProductoPorId(idProduct, detalles));
     }
 
-
     @DeleteMapping("/delete/search/{idProduct}")
     public ResponseEntity<?> deleteProductId(@PathVariable("idProduct") Long idProduct) {
         productServices.eliminarProductoPorId(idProduct);
         return ResponseEntity.ok("Producto eliminado con éxito.");
     }
+
+    @GetMapping("/search-clients/{idProduct}")
+    public ResponseEntity<?> findClientByProduct(@PathVariable("idProduct") Long idProduct) {
+        return ResponseEntity.ok(productServices.findClientByIdProduct(idProduct));
+    }
+
 
 }

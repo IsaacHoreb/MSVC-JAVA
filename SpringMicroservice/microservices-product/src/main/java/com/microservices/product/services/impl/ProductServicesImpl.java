@@ -1,6 +1,9 @@
 package com.microservices.product.services.impl;
 
+import com.microservices.product.client.ClientsClient;
+import com.microservices.product.dto.ClientDTOS;
 import com.microservices.product.entity.productEntity;
+import com.microservices.product.http.response.ClientByProductResponse;
 import com.microservices.product.repository.productRepository;
 import com.microservices.product.services.IProductServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,10 @@ public class ProductServicesImpl implements IProductServices {
 
     @Autowired
     private productRepository repository;
+
+    //Para obtener los datos del client
+    @Autowired
+    private ClientsClient client;
 
     @Override
     public productEntity guardarProductos(productEntity product) {
@@ -72,4 +79,36 @@ public class ProductServicesImpl implements IProductServices {
     public List<productEntity> listarTodosProductos() {
         return repository.findAll();
     }
+
+    //Aqui la logica para mostrar los dos msvc
+    @Override
+    public ClientByProductResponse findClientByIdProduct(Long idProduct) {
+
+        //Consultar el Producto
+        productEntity product = repository.findById(idProduct)
+                .orElse(new productEntity());
+
+        //Consultar los Clientes
+        List<ClientDTOS> clientDTOSList = client.findAllClientByProduct(idProduct);
+
+        //Devolver los datos deseados
+        return ClientByProductResponse.builder()
+                .tipoProduct(product.getTipoProduct())
+                .modelo(product.getModelo())
+                .procesador(product.getProcesador())
+                .ram(product.getRam())
+                .almacenamiento(product.getAlmacenamiento())
+                .bateria(product.getBateria())
+                .pantalla(product.getPantalla())
+                .conectividad(product.getConectividad())
+                .sistemaOperativo(product.getSistemaOperativo())
+                .tipoSeguridad(product.getTipoSeguridad())
+                .precio(product.getPrecio())
+                .clientDTOSList(clientDTOSList)
+                .build();
+    }
+
+    //Despues agregarlo o usarlo en el controlador
+
+
 }
