@@ -17,6 +17,14 @@ spring:
           locator:
             enabled: true
         routes:
+          - id: cliente
+            uri: http://localhost:9090
+            predicates:
+              - Path=/api/client/**
+          - id: producto
+            uri: http://localhost:9091
+            predicates:
+              - Path=/api/product/**
           - id: game
             uri: http://localhost:9092
             predicates:
