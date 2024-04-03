@@ -1,30 +1,5 @@
-server:
-  port: 9092
-
 spring:
   config:
     import: optional:configserver:http://localhost:8888 #Agregado, ya que el msvc-config no esta configurado
   application:
     name: msvc-game
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springproyect
-    username: root
-    password: Dragon1234
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true   #nuevos
-    properties: #nuevos
-      hibernate: #nuevos
-        format_sql: true #nuevos
-    database: mysql
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-
-  #Para que se registre en Eureka
-  eureka:
-    instance:
-      hostname: localhost
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka/
